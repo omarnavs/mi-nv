@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta de Amor</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Georgia', serif;
+    }
+
+    .sobre-container {
+      perspective: 1200px;
+    }
+
+    .sobre {
+      width: 360px;
+      height: 240px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .base {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      overflow: hidden; /* CLAVE: mantiene la carta dentro */
+      z-index: 1;
+    }
+
+    .tapa {
+      position: absolute;
+      inset: 0;
+      background: #f1f1f1;
+      clip-path: polygon(0 0, 100% 0, 50% 55%);
+      transform-origin: top;
+      transition: transform 1s ease;
+      z-index: 3;
+    }
+
+    .sobre.abierto .tapa {
+      transform: rotateX(180deg);
+    }
+
+    .carta {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%) translateY(100%); /* empieza oculta */
+      width: 90%;
+      height: 85%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: transform 1.2s ease;
+      z-index: 2;
+      overflow-y: auto;
+    }
+
+    .sobre.abierto .carta {
+      transform: translateX(-50%) translateY(10%); /* sube pero sigue dentro */
+    }
+
+    h1 {
+      text-align: center;
+      color: #e63946;
+      margin-bottom: 18px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    .firma {
+      margin-top: 25px;
+      text-align: right;
+      font-style: italic;
+      color: #555;
+    }
+
+    .indicacion {
+      position: absolute;
+      bottom: -45px;
+      width: 100%;
+      text-align: center;
+      color: #000000;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+      .link-pagina {
+      display: inline-block;
+      margin-top: 6px;
+      color: #000000;
+      text-decoration: underline;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .link-pagina:hover {
+      opacity: 0.85;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="sobre-container">
+    <div class="sobre" onclick="this.classList.toggle('abierto')">
+      <div class="base">
+        <div class="carta">
+          <h1>Para mi maetita hermosa</h1>
+
+          <p>
+            Desde que llegaste a mi vida, todo cambió de una manera que jamás imaginé.
+            Los días son más claros y mi corazón encontró su lugar en ti.
+          </p>
+
+          <p>
+            Me enamora tu sonrisa, tu forma de ser y la paz que siento cuando estoy
+            a tu lado. Eres mi pensamiento favorito cada día.
+          </p>
+
+          <p>
+            Gracias por existir y por quererme como lo haces. Prometo amarte,
+            cuidarte y elegirte siempre.
+          </p>
+
+          <div class="firma">
+            Con todo mi amor,<br />
+            <strong>Tu novio ingeniero</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="tapa"></div>
+      <div class="indicacion">
+        Toca el sobre para abrirlo 💌<br />
+        <a href="index2.html" class="link-pagina">Canciones que me recueran a ti.</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

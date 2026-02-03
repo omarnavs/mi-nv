@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Canciones que me recuerdan a ti 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card p {
+      margin: 10px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #fff;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 20px;
+      padding: 25px;
+      position: relative;
+      animation: aparecer 0.4s ease;
+    }
+
+    @keyframes aparecer {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .modal h2 {
+      color: #ff6f91;
+      margin-bottom: 10px;
+    }
+
+    .lyrics {
+      white-space: pre-line;
+      color: #444;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Canciones que me recuerdan a ti 💕</h1>
+
+    <div class="grid">
+      <div class="card" onclick="openSong(1)">
+        <img src="imgs/cancion1.jpeg" alt="Canción 1">
+        <p>24:7</p>
+      </div>
+
+      <div class="card" onclick="openSong(2)">
+        <img src="imgs/cancion2.jpeg" alt="Canción 2">
+        <p>Ojitos de miel</p>
+      </div>
+
+      <div class="card" onclick="openSong(3)">
+        <img src="imgs/cancion3.jpeg" alt="Canción 3">
+        <p>LQRA Sessions #5</p>
+      </div>
+
+      <div class="card" onclick="openSong(4)">
+        <img src="imgs/imagen4.jpg" alt="Canción 4">
+        <p>Amor</p>
+      </div>
+
+      <div class="card" onclick="openSong(5)">
+        <img src="imgs/cancion5.jpeg" alt="Canción 5">
+        <p>nomas tu </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="songTitle"></h2>
+      <div class="lyrics" id="songLyrics"></div>
+    </div>
+  </div>
+
+  <script>
+    const songs = {
+      1: {
+        title: "24:7",
+        lyrics: "De tu artista favorito, la primera cancion que escuche y me hizo pensar en ti.\n\nQuisiera estar contigo 24:7\nPorque no puedo ir un día sin verte\nEs que tu presencia es algo que necesito\nEs tan esencial como el aire que respiro"
+      },
+      2: {
+        title: "Ojitos de miel",
+        lyrics: "Uf esta rola, de mis favoritas y la cancion que mas me gusta de T3R elemento. \n\nJunto a ti el tiempo se me vuelve eterno todo lento\nY los problemas se me van\nY si no estás conmigo en ti pienso nomás\nEn mi corazón siempre tu lugar esta"
+      },
+      3: {
+        title: "LQRA Session #5",
+        lyrics: "Que te digo, Charles Ans uno de mis artistas favoritos, esta parte de verdad me hace pensar el inicio de nuestra relacion, estaba en un mal momento y tu viniste a alegrarme los dias.\n\nLa tarde gris, el día nublado\nLa vida me golpeó y me arrastró a su lado\nY aunque medio roto me arranco el pasado\nMe devuelves poco a poco lo que me han quitado."
+      },
+      4: {
+        title: "Amor",
+        lyrics: "Dannylux de nuevo jaja, yo se lo mucho que te encanta y esta parte va para ti.\n\nAmor, amor, amor, amor\nYo quiero estar a tu lado\nEres mi mejor regalo\nNo hay otra que yo prefiero."
+      },
+      5: {
+        title: "nomas tu",
+        lyrics: "Simplemente nomastu, tu eres mi vida entera amor, y sacas lo mejor de mi, te amo.\n\nY con todo me refiero a ti\nEs que tú, conviertes un día malo en bueno\nY mi corazón entero, solamente piensa en ti\nEs que tú, me sacas lo malo por dentro\nEl antídoto de mi veneno eres tú."
+      }
+    };
+
+    function openSong(id) {
+      document.getElementById('songTitle').innerText = songs[id].title;
+      document.getElementById('songLyrics').innerText = songs[id].lyrics;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+  
+
+</body>
+</html>
